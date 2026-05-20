@@ -25,6 +25,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@fontsource/heebo": "^5.2.8",
     "@tailwindcss/postcss": "^4",
     "@trpc/next": "^11.17.0",
     "@types/node": "^20",
