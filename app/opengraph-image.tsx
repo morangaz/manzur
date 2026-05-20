@@ -6,6 +6,11 @@ export const alt = "מנצור אלומיניום — גדרות אלומיני�
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+// Satori renders Hebrew LTR — reversing the string makes it display correctly
+function rtl(str: string) {
+  return str.split("").reverse().join("");
+}
+
 export default function OgImage() {
   const heeboHebrew = readFileSync(join(process.cwd(), "public/fonts/heebo-hebrew-900.woff"));
   const heeboLatin = readFileSync(join(process.cwd(), "public/fonts/heebo-latin-900.woff"));
@@ -21,18 +26,18 @@ export default function OgImage() {
           alignItems: "flex-end",
           justifyContent: "center",
           background: "#1a1714",
-          padding: "60px 72px",
+          padding: "60px 80px",
           fontFamily: "Heebo, Arial, sans-serif",
           position: "relative",
         }}
       >
-        {/* Green accent bar on right */}
+        {/* Green accent bar on right edge */}
         <div
           style={{
             position: "absolute",
             top: 0,
             right: 0,
-            width: 8,
+            width: 10,
             height: "100%",
             background: "#4a7c59",
           }}
@@ -44,30 +49,27 @@ export default function OgImage() {
             display: "flex",
             background: "#4a7c59",
             color: "white",
-            fontSize: 18,
+            fontSize: 20,
             fontWeight: 900,
-            padding: "8px 24px",
+            padding: "10px 28px",
             borderRadius: 100,
-            marginBottom: 28,
-            direction: "rtl",
+            marginBottom: 32,
           }}
         >
-          35 שנות ניסיון · רעננה, ישראל
+          {rtl("רעננה, ישראל · 35 שנות ניסיון")}
         </div>
 
         {/* Main heading */}
         <div
           style={{
-            fontSize: 80,
+            fontSize: 84,
             fontWeight: 900,
             color: "white",
-            lineHeight: 1.1,
-            marginBottom: 16,
-            direction: "rtl",
-            textAlign: "right",
+            lineHeight: 1.05,
+            marginBottom: 20,
           }}
         >
-          מנצור אלומיניום
+          {rtl("מנצור אלומיניום")}
         </div>
 
         {/* Subtitle */}
@@ -76,26 +78,24 @@ export default function OgImage() {
             fontSize: 34,
             fontWeight: 900,
             color: "#a89880",
-            marginBottom: 44,
-            direction: "rtl",
-            textAlign: "right",
+            marginBottom: 52,
           }}
         >
-          גדרות אלומיניום איכותיות · התקנה מקצועית
+          {rtl("גדרות אלומיניום איכותיות · התקנה מקצועית")}
         </div>
 
-        {/* Stats row — RTL order: right to left */}
+        {/* Stats row */}
         <div
           style={{
             display: "flex",
             flexDirection: "row",
-            gap: 56,
+            gap: 60,
           }}
         >
           {[
-            { n: "300+", label: "פרויקטים" },
-            { n: "35", label: "שנות ניסיון" },
-            { n: "4", label: "דגמי גדר" },
+            { n: "300+", label: rtl("פרויקטים") },
+            { n: "35", label: rtl("שנות ניסיון") },
+            { n: "4", label: rtl("דגמי גדר") },
           ].map((item) => (
             <div
               key={item.label}
@@ -107,7 +107,7 @@ export default function OgImage() {
             >
               <div
                 style={{
-                  fontSize: 52,
+                  fontSize: 54,
                   fontWeight: 900,
                   color: "#4a7c59",
                   lineHeight: 1,
@@ -115,20 +115,14 @@ export default function OgImage() {
               >
                 {item.n}
               </div>
-              <div
-                style={{
-                  fontSize: 18,
-                  color: "#8a7a6a",
-                  direction: "rtl",
-                }}
-              >
+              <div style={{ fontSize: 20, color: "#8a7a6a" }}>
                 {item.label}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Phone — bottom right */}
+        {/* Phone bottom right */}
         <div
           style={{
             position: "absolute",
@@ -136,13 +130,12 @@ export default function OgImage() {
             right: 80,
             fontSize: 22,
             color: "#7a6a5a",
-            direction: "rtl",
           }}
         >
           050-4646536 | 09-7603602
         </div>
 
-        {/* URL — bottom left */}
+        {/* URL bottom left */}
         <div
           style={{
             position: "absolute",
@@ -150,7 +143,6 @@ export default function OgImage() {
             left: 80,
             fontSize: 20,
             color: "#6a5a4a",
-            fontFamily: "Heebo, Arial, sans-serif",
           }}
         >
           manzur.co.il
