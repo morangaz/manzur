@@ -1,26 +1,297 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Mantzor Warm Editorial Palette */
+  --background: oklch(0.98 0.008 80);
+  --foreground: oklch(0.18 0.02 60);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 60);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 60);
+  --primary: oklch(0.22 0.02 60);
+  --primary-foreground: oklch(0.98 0.008 80);
+  --secondary: oklch(0.94 0.015 80);
+  --secondary-foreground: oklch(0.22 0.02 60);
+  --muted: oklch(0.92 0.012 80);
+  --muted-foreground: oklch(0.52 0.02 60);
+  --accent: oklch(0.42 0.08 145);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.88 0.012 80);
+  --input: oklch(0.92 0.012 80);
+  --ring: oklch(0.42 0.08 145);
+  --radius: 0.5rem;
+
+  /* Custom brand tokens */
+  --aluminum: oklch(0.55 0.01 220);
+  --earth: oklch(0.42 0.08 145);
+  --warm-sand: oklch(0.94 0.015 80);
+  --deep-charcoal: oklch(0.18 0.02 60);
+  --cream: oklch(0.98 0.008 80);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    direction: rtl;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-size: 17px;
+    line-height: 1.65;
+    font-family: var(--font-heebo), 'Arial Hebrew', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    h1 { font-size: 2.4rem !important; }
+    h2 { font-size: 1.9rem !important; }
+    h3 { font-size: 1.3rem !important; }
+    p, li, label, input, select, textarea, a { font-size: 1rem !important; }
+    .text-xs { font-size: 0.8rem !important; }
+    .text-sm { font-size: 0.95rem !important; }
+    .section-label { font-size: 0.85rem !important; }
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  a[href],
+  select:not(:disabled) {
+    cursor: pointer;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-heebo), 'Arial Hebrew', Arial, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-bold text-base transition-all duration-150;
+    background: var(--deep-charcoal);
+    color: var(--cream);
+    transform: translateY(0);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px oklch(0.18 0.02 60 / 0.25);
+  }
+  .btn-primary:active { transform: scale(0.97); }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-bold text-base transition-all duration-150;
+    background: #25D366;
+    color: white;
+  }
+  .btn-whatsapp:hover {
+    background: #1ebe5d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px #25D36640;
+  }
+  .btn-whatsapp:active { transform: scale(0.97); }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-bold text-base transition-all duration-150 border-2;
+    border-color: var(--deep-charcoal);
+    color: var(--deep-charcoal);
+    background: transparent;
+  }
+  .btn-outline:hover {
+    background: var(--deep-charcoal);
+    color: var(--cream);
+    transform: translateY(-2px);
+  }
+  .btn-outline:active { transform: scale(0.97); }
+
+  .section-label {
+    @apply text-xs font-bold tracking-widest uppercase;
+    color: var(--earth);
+  }
+
+  .card-fence {
+    @apply relative overflow-hidden rounded-2xl cursor-pointer transition-all duration-300;
+    box-shadow: 0 4px 24px oklch(0.18 0.02 60 / 0.08);
+  }
+  .card-fence:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px oklch(0.18 0.02 60 / 0.18);
+  }
+
+  .kit-item {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    background: var(--warm-sand);
+    direction: rtl;
+    text-align: right;
+    min-height: 80px;
+  }
+  .kit-item .kit-icon {
+    flex-shrink: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-top: 0.1rem;
+  }
+  .kit-item .kit-text {
+    flex: 1;
+    text-align: right;
+  }
+
+  .testimonial-card {
+    @apply p-6 rounded-2xl;
+    background: var(--warm-sand);
+    border: 1px solid var(--border);
+  }
+
+  .form-field {
+    @apply flex flex-col gap-1.5;
+  }
+  .form-field label {
+    @apply text-sm font-bold;
+    color: var(--deep-charcoal);
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    @apply w-full px-4 py-3 rounded-xl border text-base transition-all duration-150;
+    background: white;
+    border-color: var(--border);
+    color: var(--deep-charcoal);
+    font-family: var(--font-heebo), Arial, sans-serif;
+    text-align: right;
+    direction: rtl;
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: var(--earth);
+    box-shadow: 0 0 0 3px oklch(0.42 0.08 145 / 0.15);
+  }
+  .form-field input.error,
+  .form-field select.error,
+  .form-field textarea.error {
+    border-color: oklch(0.577 0.245 27.325);
+  }
+  .form-field .error-msg {
+    @apply text-xs font-medium;
+    color: oklch(0.577 0.245 27.325);
+  }
+
+  .whatsapp-float {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    z-index: 50;
+    @apply flex items-center gap-2 px-4 py-3 rounded-full font-bold text-sm shadow-xl transition-all duration-200;
+    background: #25D366;
+    color: white;
+  }
+  .whatsapp-float:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px #25D36650;
+  }
+
+  .rtl-bullet-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0;
+  }
+  .rtl-bullet-list li {
+    position: relative;
+    padding-right: 1.5rem !important;
+    padding-left: 0 !important;
+    text-align: right !important;
+    direction: rtl !important;
+    display: block !important;
+  }
+  .rtl-bullet-list li::before {
+    content: '';
+    position: absolute;
+    right: 0.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.7;
+  }
+  .rtl-bullet-list li.gold-dot::before { background: oklch(0.85 0.15 85); opacity: 1; }
+  .rtl-bullet-list li.earth-dot::before { background: var(--earth); opacity: 1; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
