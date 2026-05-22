@@ -6,6 +6,7 @@ import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { WHATSAPP_URL } from "@/lib/constants";
 
 const links = [
+  { label: "קטלוג", href: "/catalog" },
   { label: "דגמי גדר", href: "#models" },
   { label: "איך זה עובד", href: "#how-it-works" },
   { label: "גלריה", href: "#gallery" },

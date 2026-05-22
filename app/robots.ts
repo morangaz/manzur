@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/admin", "/api/"],
       },
     ],
-    sitemap: "https://manzur.co.il/sitemap.xml",
-    host: "https://manzur.co.il",
+    sitemap: "https://www.manzur.co.il/sitemap.xml",
+    host: "https://www.manzur.co.il",
   };
 }

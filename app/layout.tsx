@@ -13,7 +13,7 @@ const heebo = Heebo({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://manzur.co.il"),
+  metadataBase: new URL("https://www.manzur.co.il"),
   title: {
     default: "מנצור אלומיניום | גדרות אלומיניום איכותיות ברעננה",
     template: "%s | מנצור אלומיניום",
@@ -39,13 +39,13 @@ export const metadata: Metadata = {
   creator: "מנצור אלומיניום",
   publisher: "מנצור אלומיניום",
   alternates: {
-    canonical: "https://manzur.co.il",
-    languages: { he: "https://manzur.co.il" },
+    canonical: "https://www.manzur.co.il",
+    languages: { he: "https://www.manzur.co.il" },
   },
   openGraph: {
     type: "website",
     locale: "he_IL",
-    url: "https://manzur.co.il",
+    url: "https://www.manzur.co.il",
     siteName: "מנצור אלומיניום",
     title: "מנצור אלומיניום | גדרות אלומיניום איכותיות ברעננה",
     description:
@@ -85,10 +85,10 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://manzur.co.il",
+  "@id": "https://www.manzur.co.il",
   name: "מנצור אלומיניום",
   description: "ייצור והתקנת גדרות אלומיניום איכותיות — 35 שנות ניסיון ברעננה",
-  url: "https://manzur.co.il",
+  url: "https://www.manzur.co.il",
   telephone: ["050-4646536", "09-7603602"],
   email: "info@manzur.co.il",
   address: {
@@ -103,8 +103,8 @@ const jsonLd = {
     latitude: 32.1847,
     longitude: 34.8711,
   },
-  image: "https://manzur.co.il/images/logo.png",
-  logo: "https://manzur.co.il/images/logo.png",
+  image: "https://www.manzur.co.il/images/logo.png",
+  logo: "https://www.manzur.co.il/images/logo.png",
   sameAs: [
     "https://www.instagram.com/alumni_fence/",
     "https://www.facebook.com/profile.php?id=61589011094917",

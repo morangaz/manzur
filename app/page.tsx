@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "מנצור אלומיניום | גדרות אלומיניום איכותיות ברעננה",
   description:
     "מנצור אלומיניום - 35 שנות ניסיון בייצור והתקנת גדרות אלומיניום. גדר קלאסית, כפרית, היי-טק ולייזר. ערכות DIY חתוכות למידה. אזור המרכז.",
-  alternates: { canonical: "https://manzur.co.il" },
+  alternates: { canonical: "https://www.manzur.co.il" },
 };
 
 export default function HomePage() {

@@ -145,7 +145,7 @@ export default function OgImage() {
             color: "#6a5a4a",
           }}
         >
-          manzur.co.il
+          www.manzur.co.il
         </div>
       </div>
     ),
