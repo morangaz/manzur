@@ -6,7 +6,6 @@ import Paths from "@/components/sections/Paths";
 import HowItWorks from "@/components/sections/HowItWorks";
 import Kit from "@/components/sections/Kit";
 import Gallery from "@/components/sections/Gallery";
-import CatalogSection from "@/components/sections/CatalogSection";
 import Special from "@/components/sections/Special";
 import Contact from "@/components/sections/Contact";
 import About from "@/components/sections/About";
@@ -32,7 +31,6 @@ export default function HomePage() {
         <HowItWorks />
         <Kit />
         <Gallery />
-        <CatalogSection />
         <Special />
         <Contact />
         <About />

@@ -9,7 +9,6 @@ const links = [
   { label: "דגמי גדר", href: "#models" },
   { label: "איך זה עובד", href: "#how-it-works" },
   { label: "גלריה", href: "#gallery" },
-  { label: "קטלוג", href: "#catalog" },
   { label: "עבודות מיוחדות", href: "#special" },
   { label: "אודות", href: "#about" },
   { label: "צור קשר", href: "#contact" },
