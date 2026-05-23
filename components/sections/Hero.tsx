@@ -9,7 +9,7 @@ export default function Hero() {
           src="/images/hero.webp"
           alt="גדר אלומיניום מודרנית בכניסה לבית פרטי ברעננה"
           fill
-          priority
+          preload
           className="object-cover"
           sizes="100vw"
         />

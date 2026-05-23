@@ -34,13 +34,27 @@ export const metadata: Metadata = {
     "אלומיניום רעננה",
     "שער אלומיניום",
     "פרגולת אלומיניום",
+    "גדר לבית פרטי",
+    "גדר חצר",
+    "גדר גינה",
+    "התקנת גדר",
+    "גדר אלומיניום מחיר",
+    "גדר אלומיניום כפר סבא",
+    "גדר אלומיניום הרצליה",
+    "גדר אלומיניום נתניה",
+    "גדר DIY",
+    "ערכת גדר",
+    "גדר מוכנה להרכבה",
   ],
   authors: [{ name: "מנצור אלומיניום" }],
   creator: "מנצור אלומיניום",
   publisher: "מנצור אלומיניום",
   alternates: {
     canonical: "https://www.manzur.co.il",
-    languages: { he: "https://www.manzur.co.il" },
+    languages: {
+      he: "https://www.manzur.co.il",
+      "he-IL": "https://www.manzur.co.il",
+    },
   },
   openGraph: {
     type: "website",
@@ -84,7 +98,7 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
   "@id": "https://www.manzur.co.il",
   name: "מנצור אלומיניום",
   description: "ייצור והתקנת גדרות אלומיניום איכותיות — 35 שנות ניסיון ברעננה",
@@ -140,6 +154,26 @@ const jsonLd = {
     reviewCount: "3",
     bestRating: "5",
   },
+  review: [
+    {
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      author: { "@type": "Person", name: "אורה כ." },
+      reviewBody: "שירות מקצועי ומהיר. הגדר יצאה מדהים, ממליצה בחום!",
+    },
+    {
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      author: { "@type": "Person", name: "דני מ." },
+      reviewBody: "ערכת ה-DIY היתה פשוטה להרכבה, ייעוץ טלפוני מצוין. תוצאה מושלמת.",
+    },
+    {
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      author: { "@type": "Person", name: "יעל ר." },
+      reviewBody: "מנצור אלומיניום — מקצועיות, אמינות ואיכות. הגדר עמידה ויפה.",
+    },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -151,6 +185,97 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "@id": "https://www.manzur.co.il/#breadcrumb",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "דף הבית",
+                  item: "https://www.manzur.co.il",
+                },
+              ],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "@id": "https://www.manzur.co.il/#webpage",
+              name: "מנצור אלומיניום | גדרות אלומיניום איכותיות ברעננה",
+              url: "https://www.manzur.co.il",
+              inLanguage: "he",
+              isPartOf: {
+                "@type": "WebSite",
+                "@id": "https://www.manzur.co.il/#website",
+                url: "https://www.manzur.co.il",
+                name: "מנצור אלומיניום",
+                inLanguage: "he",
+              },
+              breadcrumb: { "@id": "https://www.manzur.co.il/#breadcrumb" },
+              about: { "@id": "https://www.manzur.co.il" },
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "מהי גדר אלומיניום?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "גדר אלומיניום היא גדר עשויה פרופילי אלומיניום מצופי אבקה. היא עמידה בפני חלודה, קלה לתחזוקה ומתאימה לשימוש חיצוני בכל מזג אוויר.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "מה ההבדל בין גדר קלאסית לגדר כפרית?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "גדר קלאסית בנויה משלבים אופקיים ישרים ומראה מודרני ונקי. גדר כפרית משלבת פרופילים בגדלים שונים ומראה חמים יותר שמתאים לסביבה ירוקה.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "כמה עולה גדר אלומיניום?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "המחיר תלוי בדגם, בגובה, ובאורך הגדר. מנצור אלומיניום מציעה ערכות DIY חסכוניות לצד התקנה מקצועית. צרו קשר לקבלת הצעת מחיר מותאמת אישית.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "האם מנצור אלומיניום מתקינים גדרות ברעננה?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "כן! מנצור אלומיניום ממוקמת ברעננה ומספקת שירות התקנה מקצועית ברעננה, כפר סבא, הרצליה, נתניה וכל אזור המרכז.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "מהו שירות ה-DIY של מנצור אלומיניום?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "ערכת DIY של מנצור אלומיניום כוללת את כל חלקי הגדר חתוכים למידה הנדרשת שלכם, עם הוראות הרכבה ותמיכה טלפונית. ניתן להרכיב את הגדר בעצמכם ללא ניסיון קודם.",
+                  },
+                },
+              ],
+            }),
+          }}
         />
         <Script
           id="gtm"
