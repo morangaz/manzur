@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
 
@@ -35,7 +35,7 @@ type Section = {
   products: Product[];
 };
 
-const DEFAULT_SECTIONS: Section[] = [
+const SECTIONS: Section[] = [
   {
     id: "horizontal",
     title: "שלבים אופקיים",
@@ -145,102 +145,14 @@ const DEFAULT_SECTIONS: Section[] = [
   },
 ];
 
-// ─── Editable text ─────────────────────────────────────────────────────────────
-function EditableText({
-  value,
-  onChange,
-  className,
-  multiline = false,
-  placeholder,
-  editMode,
-}: {
-  value: string;
-  onChange: (v: string) => void;
-  className?: string;
-  multiline?: boolean;
-  placeholder?: string;
-  editMode: boolean;
-}) {
-  const [editing, setEditing] = useState(false);
-
-  if (!editMode) {
-    return <span className={className}>{value}</span>;
-  }
-
-  if (editing) {
-    if (multiline) {
-      return (
-        <textarea
-          autoFocus
-          className={`${className} border-2 rounded-lg p-1 w-full resize-none outline-none`}
-          style={{ borderColor: "var(--earth)", fontFamily: "inherit", fontSize: "inherit", fontWeight: "inherit" }}
-          value={value}
-          rows={4}
-          onChange={(e) => onChange(e.target.value)}
-          onBlur={() => setEditing(false)}
-        />
-      );
-    }
-    return (
-      <input
-        autoFocus
-        type="text"
-        className={`${className} border-2 rounded-lg px-2 py-0.5 w-full outline-none`}
-        style={{ borderColor: "var(--earth)", fontFamily: "inherit", fontSize: "inherit", fontWeight: "inherit" }}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        onBlur={() => setEditing(false)}
-        onKeyDown={(e) => e.key === "Enter" && setEditing(false)}
-      />
-    );
-  }
-
-  return (
-    <span
-      className={`${className} cursor-text hover:bg-yellow-50 hover:outline hover:outline-2 hover:outline-dashed rounded transition-all`}
-      style={{ outlineColor: "var(--earth)" }}
-      onClick={() => setEditing(true)}
-      title="לחצו לעריכה"
-    >
-      {value || <span className="text-gray-400 italic">{placeholder}</span>}
-    </span>
-  );
-}
-
 // ─── Product Card ─────────────────────────────────────────────────────────────
-function ProductCard({
-  product,
-  editMode,
-  onUpdate,
-}: {
-  product: Product;
-  editMode: boolean;
-  onUpdate: (field: keyof Product, value: string | string[]) => void;
-}) {
-  const fileRef = useRef<HTMLInputElement>(null);
-  const [imgSrc, setImgSrc] = useState(product.image);
-
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const url = URL.createObjectURL(file);
-    setImgSrc(url);
-    onUpdate("image", url);
-  };
-
-  const toggleColor = (hex: string) => {
-    const next = product.colors.includes(hex)
-      ? product.colors.filter((c) => c !== hex)
-      : [...product.colors, hex];
-    onUpdate("colors", next);
-  };
-
+function ProductCard({ product }: { product: Product }) {
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-sm border" style={{ borderColor: "var(--border)" }}>
       {/* Image */}
-      <div className="relative group" style={{ aspectRatio: "4/3" }}>
+      <div className="relative" style={{ aspectRatio: "4/3" }}>
         <img
-          src={imgSrc}
+          src={product.image}
           alt={product.name}
           className="w-full h-full object-cover"
           loading="lazy"
@@ -253,65 +165,33 @@ function ProductCard({
             {product.badge}
           </span>
         )}
-        {editMode && (
-          <button
-            onClick={() => fileRef.current?.click()}
-            className="absolute bottom-3 left-3 text-xs font-bold px-3 py-1.5 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
-            style={{ background: "oklch(0.22 0.02 60 / 0.85)" }}
-          >
-            📷 החלף תמונה
-          </button>
-        )}
-        <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
       </div>
 
       {/* Content */}
       <div className="p-5">
-        {/* Name */}
-        <EditableText
-          editMode={editMode}
-          value={product.name}
-          onChange={(v) => onUpdate("name", v)}
-          className="block text-xl font-black mb-1"
-          placeholder="שם המוצר"
-        />
+        <span className="block text-xl font-black mb-1" style={{ color: "var(--deep-charcoal)" }}>
+          {product.name}
+        </span>
+        <span className="block text-sm font-semibold mb-3" style={{ color: "var(--muted-foreground)" }}>
+          {product.subtitle}
+        </span>
 
-        {/* Subtitle */}
-        <EditableText
-          editMode={editMode}
-          value={product.subtitle}
-          onChange={(v) => onUpdate("subtitle", v)}
-          className="block text-sm font-semibold mb-3"
-          placeholder="כותרת משנה"
-        />
-
-        {/* Description */}
         <div className="mb-4">
           <div className="text-xs font-bold uppercase tracking-wider mb-1" style={{ color: "var(--muted-foreground)" }}>
             תיאור
           </div>
-          <EditableText
-            editMode={editMode}
-            value={product.description}
-            onChange={(v) => onUpdate("description", v)}
-            className="block text-sm leading-relaxed"
-            multiline
-            placeholder="תיאור המוצר"
-          />
+          <p className="text-sm leading-relaxed" style={{ color: "var(--deep-charcoal)" }}>
+            {product.description}
+          </p>
         </div>
 
-        {/* Dimensions */}
         <div className="mb-4 p-3 rounded-xl" style={{ background: "var(--cream)" }}>
           <div className="text-xs font-bold uppercase tracking-wider mb-1" style={{ color: "var(--muted-foreground)" }}>
             מידות
           </div>
-          <EditableText
-            editMode={editMode}
-            value={product.dimensions}
-            onChange={(v) => onUpdate("dimensions", v)}
-            className="block text-sm font-mono font-semibold"
-            placeholder="מידות המוצר"
-          />
+          <span className="block text-sm font-mono font-semibold" style={{ color: "var(--deep-charcoal)" }}>
+            {product.dimensions}
+          </span>
         </div>
 
         {/* Colors */}
@@ -320,54 +200,36 @@ function ProductCard({
             גוונים זמינים
           </div>
           <div className="flex flex-wrap gap-2">
-            {editMode
-              ? COLORS.map((c) => (
-                  <button
-                    key={c.hex}
-                    onClick={() => toggleColor(c.hex)}
-                    className="w-7 h-7 rounded-full border-2 transition-all"
-                    style={{
-                      background: c.hex,
-                      borderColor: product.colors.includes(c.hex) ? "var(--earth)" : "transparent",
-                      outline: product.colors.includes(c.hex) ? "2px solid var(--earth)" : "none",
-                      outlineOffset: "2px",
-                    }}
-                    title={`${c.name} — ${c.label}`}
-                  />
-                ))
-              : product.colors.map((hex) => {
-                  const color = COLORS.find((c) => c.hex === hex);
-                  return (
-                    <div
-                      key={hex}
-                      className="w-7 h-7 rounded-full border-2"
-                      style={{ background: hex, borderColor: "oklch(0.88 0.012 80)" }}
-                      title={color ? `${color.name} — ${color.label}` : hex}
-                    />
-                  );
-                })}
+            {product.colors.map((hex) => {
+              const color = COLORS.find((c) => c.hex === hex);
+              return (
+                <div
+                  key={hex}
+                  className="w-7 h-7 rounded-full border-2"
+                  style={{ background: hex, borderColor: "oklch(0.88 0.012 80)" }}
+                  title={color ? `${color.name} — ${color.label}` : hex}
+                />
+              );
+            })}
           </div>
         </div>
 
-        {/* Notes */}
-        {(editMode || product.notes) && (
-          <div className="text-xs rounded-xl p-3" style={{ background: "oklch(0.94 0.015 80 / 0.5)", color: "var(--muted-foreground)" }}>
-            <EditableText
-              editMode={editMode}
-              value={product.notes}
-              onChange={(v) => onUpdate("notes", v)}
-              className="block"
-              placeholder="הערות"
-            />
+        {product.notes && (
+          <div
+            className="text-xs rounded-xl p-3 mb-4"
+            style={{ background: "oklch(0.94 0.015 80 / 0.5)", color: "var(--muted-foreground)" }}
+          >
+            {product.notes}
           </div>
         )}
 
-        {/* CTA */}
         <a
           href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`שלום, אני מעוניין במוצר: ${product.name}`)}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-whatsapp w-full text-center block mt-4 text-sm"
+          className="btn-whatsapp w-full text-center block mt-2 text-sm"
+          data-gtm-category="catalog"
+          data-gtm-label={product.id}
         >
           ☎ בקש הצעת מחיר
         </a>
@@ -378,29 +240,9 @@ function ProductCard({
 
 // ─── Main Catalog Client ───────────────────────────────────────────────────────
 export default function CatalogClient() {
-  const [sections, setSections] = useState<Section[]>(DEFAULT_SECTIONS);
-  const [editMode, setEditMode] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
-  const printRef = useRef<HTMLDivElement>(null);
 
-  const updateProduct = (sectionId: string, productId: string, field: keyof Product, value: string | string[]) => {
-    setSections((prev) =>
-      prev.map((s) =>
-        s.id !== sectionId
-          ? s
-          : {
-              ...s,
-              products: s.products.map((p) =>
-                p.id !== productId ? p : { ...p, [field]: value }
-              ),
-            }
-      )
-    );
-  };
-
-  const handlePrint = () => {
-    window.print();
-  };
+  const handlePrint = () => window.print();
 
   const handleShare = () => {
     const url = window.location.href;
@@ -412,12 +254,11 @@ export default function CatalogClient() {
   };
 
   const visibleSections = activeSection
-    ? sections.filter((s) => s.id === activeSection)
-    : sections;
+    ? SECTIONS.filter((s) => s.id === activeSection)
+    : SECTIONS;
 
   return (
     <div className="min-h-screen" dir="rtl" style={{ background: "var(--cream)" }}>
-      {/* Print CSS */}
       <style>{`
         @media print {
           .no-print { display: none !important; }
@@ -436,17 +277,11 @@ export default function CatalogClient() {
                 קטלוג מוצרים
               </div>
               <div className="text-xs" style={{ color: "var(--muted-foreground)" }}>
-                מנצור אלומיניום · {sections.reduce((n, s) => n + s.products.length, 0)} מוצרים
+                מנצור אלומיניום · {SECTIONS.reduce((n, s) => n + s.products.length, 0)} מוצרים
               </div>
             </div>
           </div>
           <div className="flex gap-2 flex-row-reverse">
-            <button
-              onClick={() => setEditMode((v) => !v)}
-              className="btn-primary text-sm px-4 py-2"
-            >
-              {editMode ? "✓ סיום עריכה" : "✏ עריכה"}
-            </button>
             <button onClick={handlePrint} className="btn-secondary text-sm px-4 py-2">
               🖨 הדפסה
             </button>
@@ -469,7 +304,7 @@ export default function CatalogClient() {
           >
             הכל
           </button>
-          {sections.map((s) => (
+          {SECTIONS.map((s) => (
             <button
               key={s.id}
               onClick={() => setActiveSection(activeSection === s.id ? null : s.id)}
@@ -486,18 +321,8 @@ export default function CatalogClient() {
         </div>
       </div>
 
-      {/* Edit mode banner */}
-      {editMode && (
-        <div
-          className="no-print text-center py-2 text-sm font-semibold"
-          style={{ background: "oklch(0.96 0.03 145)", color: "var(--earth)" }}
-        >
-          ✏ מצב עריכה — לחצו על כל טקסט לעריכה, ועל עיגולי הצבע להוספה/הסרה
-        </div>
-      )}
-
       {/* Catalog content */}
-      <div className="max-w-6xl mx-auto px-4 py-8" ref={printRef}>
+      <div className="max-w-6xl mx-auto px-4 py-8">
         {visibleSections.map((section) => (
           <div key={section.id} className="mb-12 print-break">
             <div className="flex items-center gap-3 mb-6 flex-row-reverse">
@@ -509,12 +334,7 @@ export default function CatalogClient() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {section.products.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  editMode={editMode}
-                  onUpdate={(field, value) => updateProduct(section.id, product.id, field, value)}
-                />
+                <ProductCard key={product.id} product={product} />
               ))}
             </div>
           </div>
@@ -532,6 +352,8 @@ export default function CatalogClient() {
           target="_blank"
           rel="noopener noreferrer"
           className="btn-whatsapp inline-block px-8 py-3"
+          data-gtm-category="catalog"
+          data-gtm-label="catalog-footer-cta"
         >
           דברו איתנו בוואטסאפ
         </a>

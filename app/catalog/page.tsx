@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "כל הדגמים, הגוונים והמידות של גדרות האלומיניום של מנצור. שלבים אופקיים, אנכיים, פרופיל הייטק ועבודות מיוחדות. הזמינו ערכת DIY או קבעו התקנה מקצועית.",
   alternates: { canonical: "https://www.manzur.co.il/catalog" },
-  robots: { index: false, follow: true },
+  robots: { index: true, follow: true },
 };
 
 export default function CatalogPage() {

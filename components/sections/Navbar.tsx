@@ -6,12 +6,14 @@ import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { WHATSAPP_URL } from "@/lib/constants";
 
 const links = [
-  { label: "דגמי גדר", href: "#models" },
-  { label: "איך זה עובד", href: "#how-it-works" },
-  { label: "גלריה", href: "#gallery" },
-  { label: "עבודות מיוחדות", href: "#special" },
-  { label: "אודות", href: "#about" },
-  { label: "צור קשר", href: "#contact" },
+  { label: "דגמי גדר",      href: "/#models" },
+  { label: "קטלוג",          href: "/catalog" },
+  { label: "איך זה עובד",    href: "/#how-it-works" },
+  { label: "גלריה",          href: "/#gallery" },
+  { label: "עבודות מיוחדות", href: "/#special" },
+  { label: "בלוג",           href: "/blog" },
+  { label: "אודות",          href: "/#about" },
+  { label: "צור קשר",        href: "/#contact" },
 ];
 
 export default function Navbar() {
