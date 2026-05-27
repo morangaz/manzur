@@ -100,18 +100,27 @@ export default function Models() {
           ))}
         </div>
 
-        <p className="text-right mt-8 text-sm" style={{ color: "var(--muted-foreground)" }}>
-          לא בטוחים מה מתאים?{" "}
+        <div className="flex flex-col sm:flex-row-reverse items-center justify-between gap-4 mt-8">
           <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-bold underline underline-offset-2"
+            href="/catalog"
+            className="text-sm font-bold underline underline-offset-2 hover:opacity-70 transition-opacity"
             style={{ color: "var(--earth)" }}
           >
-            שלחו תמונה של החזית בוואטסאפ ונכוון אתכם.
+            לקטלוג המלא — כל הצבעים, הגדלים ואפשרויות ה-DIY ←
           </a>
-        </p>
+          <p className="text-right text-sm" style={{ color: "var(--muted-foreground)" }}>
+            לא בטוחים מה מתאים?{" "}
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold underline underline-offset-2"
+              style={{ color: "var(--earth)" }}
+            >
+              שלחו תמונה של החזית בוואטסאפ ונכוון אתכם.
+            </a>
+          </p>
+        </div>
       </div>
     </section>
   );

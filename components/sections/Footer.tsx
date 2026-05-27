@@ -31,6 +31,12 @@ export default function Footer() {
             >
               החרושת 2, רעננה
             </a>
+            <a href="/catalog" className="hover:text-white transition-colors">
+              קטלוג גדרות
+            </a>
+            <a href="/blog" className="hover:text-white transition-colors">
+              בלוג
+            </a>
             <a
               href={INSTAGRAM_URL}
               target="_blank"

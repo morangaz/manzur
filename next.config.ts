@@ -26,7 +26,7 @@ const securityHeaders = [
       "img-src 'self' data: https:",
       "font-src 'self' data: https://fonts.gstatic.com",
       "connect-src 'self' https:",
-      "frame-src https://www.googletagmanager.com",
+      "frame-src https://www.googletagmanager.com https://td.doubleclick.net",
     ].join("; "),
   },
 ];
@@ -51,6 +51,13 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: securityHeaders,
+      },
+      {
+        source: "/opengraph-image",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
       },
     ];
   },

@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin", "/api/"],
+        disallow: ["/admin", "/api/", "/opengraph-image"],
       },
     ],
     sitemap: "https://www.manzur.co.il/sitemap.xml",
