@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date("2026-05-25");
+  const now = new Date("2026-05-27");
   return [
     {
       url: "https://www.manzur.co.il",
@@ -41,6 +41,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: "https://www.manzur.co.il/blog/aluminum-fence-maintenance-seasonal-care",
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: "https://www.manzur.co.il/blog/aluminum-vs-iron-wood-pvc-fence-comparison",
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: "https://www.manzur.co.il/blog/aluminum-fence-color-guide-ral-powder-coating",
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
