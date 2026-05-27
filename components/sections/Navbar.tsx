@@ -7,6 +7,7 @@ import { WHATSAPP_URL } from "@/lib/constants";
 
 const links = [
   { label: "דגמי גדר",      href: "/#models" },
+  { label: "קטלוג",          href: "/catalog" },
   { label: "איך זה עובד",    href: "/#how-it-works" },
   { label: "גלריה",          href: "/#gallery" },
   { label: "עבודות מיוחדות", href: "/#special" },
