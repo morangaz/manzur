@@ -17,12 +17,65 @@ export const metadata: Metadata = {
   title: "מנצור אלומיניום | גדרות אלומיניום איכותיות ברעננה",
   description:
     "מנצור אלומיניום - 35 שנות ניסיון בייצור והתקנת גדרות אלומיניום. גדר קלאסית, כפרית, היי-טק ולייזר. ערכות DIY חתוכות למידה. אזור המרכז.",
-  alternates: { canonical: "https://www.manzur.co.il" },
+  alternates: { canonical: "https://www.manzur.co.il/" },
+};
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.manzur.co.il/#webpage",
+  url: "https://www.manzur.co.il/",
+  name: "מנצור אלומיניום | גדרות אלומיניום איכותיות ברעננה",
+  description:
+    "מנצור אלומיניום - 35 שנות ניסיון בייצור והתקנת גדרות אלומיניום. מגוון דגמים, מחירים תחרותיים, התקנה עצמית (DIY) ומקצועית באיזור המרכז.",
+  inLanguage: "he",
+  isPartOf: { "@id": "https://www.manzur.co.il" },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "כמה עולה גדר אלומיניום?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "מחיר גדר אלומיניום תלוי בדגם, גובה וכמות המטרים. ערכות DIY מתחילות מ-₪150 למטר; התקנה מקצועית מלאה מתחילה מ-₪300 למטר כולל חומרים.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "האם ניתן להרכיב גדר אלומיניום לבד?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "כן. ערכות ה-DIY של מנצור אלומיניום מגיעות חתוכות למידה המדויק של החצר שלכם עם הוראות הרכבה. רוב הלקוחות מסיימים בסוף שבוע.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "מה ההבדל בין גדר קלאסית לגדר היי-טק?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "גדר קלאסית כוללת קישוטים מסולסלים עם אופי מסורתי; גדר היי-טק היא קווים נקיים וסגנון מודרני. שתיהן עשויות אלומיניום באותה עמידות.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "כמה זמן אורכת ההתקנה?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "התקנה מקצועית של גדר סטנדרטית בגודל חצר ממוצע (20–30 מטר) נמשכת בדרך כלל יום עבודה אחד.",
+      },
+    },
+  ],
 };
 
 export default function HomePage() {
   return (
     <div className="min-h-screen" dir="rtl">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
       <main>
         <Hero />

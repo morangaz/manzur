@@ -58,7 +58,7 @@ export default async function BlogPostPage({
 
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.title,
     description: post.metaDescription,
     image: `https://www.manzur.co.il${post.image}`,

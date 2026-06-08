@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date("2026-05-27");
+  const now = new Date();
   return [
     {
-      url: "https://www.manzur.co.il",
+      url: "https://www.manzur.co.il/",
       lastModified: now,
       changeFrequency: "weekly",
       priority: 1.0,
