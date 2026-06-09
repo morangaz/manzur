@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Footer from "@/components/sections/Footer";
 import CatalogClient from "./CatalogClient";
 
 export const metadata: Metadata = {
@@ -132,9 +133,10 @@ export default function CatalogPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      {/* Server-rendered intro — visible to Googlebot first-wave crawl without JS */}
+      {/* Server-rendered heading — visible to Googlebot first-wave crawl without JS */}
       <h1 className="sr-only">קטלוג גדרות אלומיניום — מנצור אלומיניום</h1>
       <CatalogClient />
+      <Footer />
     </>
   );
 }
