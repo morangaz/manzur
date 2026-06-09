@@ -1,73 +1,38 @@
 import type { MetadataRoute } from "next";
+import { BLOG_POSTS } from "@/lib/blog-posts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const mostRecentPostDate = BLOG_POSTS.reduce(
+    (latest, post) => (post.dateISO > latest ? post.dateISO : latest),
+    "2026-05-17"
+  );
+
+  const blogPosts: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
+    url: `https://www.manzur.co.il/blog/${post.slug}`,
+    lastModified: new Date(post.dateISO),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
   return [
     {
       url: "https://www.manzur.co.il/",
-      lastModified: now,
+      lastModified: new Date("2026-05-17"),
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
       url: "https://www.manzur.co.il/catalog",
-      lastModified: now,
+      lastModified: new Date("2026-05-17"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: "https://www.manzur.co.il/blog",
-      lastModified: now,
+      lastModified: new Date(mostRecentPostDate),
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    {
-      url: "https://www.manzur.co.il/blog/fence-law-shared-neighbors-rights",
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.manzur.co.il/blog/diy-aluminum-fence-installation-guide",
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.manzur.co.il/blog/choosing-aluminum-fence-model-styles",
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.manzur.co.il/blog/aluminum-fence-maintenance-seasonal-care",
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.manzur.co.il/blog/aluminum-vs-iron-wood-pvc-fence-comparison",
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.manzur.co.il/blog/aluminum-fence-color-guide-ral-powder-coating",
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.manzur.co.il/blog/aluminum-gate-guide-types-prices",
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.manzur.co.il/blog/pool-safety-fence-aluminum-guide",
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
+    ...blogPosts,
   ];
 }
