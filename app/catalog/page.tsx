@@ -29,6 +29,8 @@ export const metadata: Metadata = {
   },
 };
 
+const OFFER_CTA = "התקשר אלינו להצעה אטרקטיבית";
+
 const itemListSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -50,6 +52,7 @@ const itemListSchema = {
         brand: { "@type": "Brand", name: "מנצור אלומיניום" },
         offers: {
           "@type": "Offer",
+          description: OFFER_CTA,
           availability: "https://schema.org/InStock",
           priceCurrency: "ILS",
           seller: { "@type": "Organization", name: "מנצור אלומיניום" },
@@ -68,6 +71,7 @@ const itemListSchema = {
         brand: { "@type": "Brand", name: "מנצור אלומיניום" },
         offers: {
           "@type": "Offer",
+          description: OFFER_CTA,
           availability: "https://schema.org/InStock",
           priceCurrency: "ILS",
           seller: { "@type": "Organization", name: "מנצור אלומיניום" },
@@ -86,6 +90,7 @@ const itemListSchema = {
         brand: { "@type": "Brand", name: "מנצור אלומיניום" },
         offers: {
           "@type": "Offer",
+          description: OFFER_CTA,
           availability: "https://schema.org/InStock",
           priceCurrency: "ILS",
           seller: { "@type": "Organization", name: "מנצור אלומיניום" },
@@ -104,6 +109,7 @@ const itemListSchema = {
         brand: { "@type": "Brand", name: "מנצור אלומיניום" },
         offers: {
           "@type": "Offer",
+          description: OFFER_CTA,
           availability: "https://schema.org/InStock",
           priceCurrency: "ILS",
           seller: { "@type": "Organization", name: "מנצור אלומיניום" },
