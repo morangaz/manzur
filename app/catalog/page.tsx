@@ -29,8 +29,6 @@ export const metadata: Metadata = {
   },
 };
 
-const OFFER_CTA = "התקשר אלינו להצעה אטרקטיבית";
-
 const itemListSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -50,13 +48,6 @@ const itemListSchema = {
           "פסי אלומיניום אנכיים בצבעים ומרווחים שונים — אווירה של הגדר הקלאסית. פרטיות בינונית.",
         image: "https://www.manzur.co.il/images/fence-classic.png",
         brand: { "@type": "Brand", name: "מנצור אלומיניום" },
-        offers: {
-          "@type": "Offer",
-          description: OFFER_CTA,
-          availability: "https://schema.org/InStock",
-          priceCurrency: "ILS",
-          seller: { "@type": "Organization", name: "מנצור אלומיניום" },
-        },
       },
     },
     {
@@ -69,13 +60,6 @@ const itemListSchema = {
           "פרופילי אלומיניום ברוחב שונה במגוון צבעים — מראה חם וכפרי. פרטיות גבוהה.",
         image: "https://www.manzur.co.il/images/fence-rural.webp",
         brand: { "@type": "Brand", name: "מנצור אלומיניום" },
-        offers: {
-          "@type": "Offer",
-          description: OFFER_CTA,
-          availability: "https://schema.org/InStock",
-          priceCurrency: "ILS",
-          seller: { "@type": "Organization", name: "מנצור אלומיניום" },
-        },
       },
     },
     {
@@ -88,13 +72,6 @@ const itemListSchema = {
           "פסי אלומיניום משופעים לכיסוי מלא — מראה מודרני, מתכתי ונועז. פרטיות מלאה.",
         image: "https://www.manzur.co.il/images/fence-hitech-slope.png",
         brand: { "@type": "Brand", name: "מנצור אלומיניום" },
-        offers: {
-          "@type": "Offer",
-          description: OFFER_CTA,
-          availability: "https://schema.org/InStock",
-          priceCurrency: "ILS",
-          seller: { "@type": "Organization", name: "מנצור אלומיניום" },
-        },
       },
     },
     {
@@ -107,13 +84,6 @@ const itemListSchema = {
           "פאנלים עם חיתוכי לייזר גיאומטריים — אופציה לתאורה משולבת ומראה אדריכלי ייחודי.",
         image: "https://www.manzur.co.il/images/fence-laser.webp",
         brand: { "@type": "Brand", name: "מנצור אלומיניום" },
-        offers: {
-          "@type": "Offer",
-          description: OFFER_CTA,
-          availability: "https://schema.org/InStock",
-          priceCurrency: "ILS",
-          seller: { "@type": "Organization", name: "מנצור אלומיניום" },
-        },
       },
     },
   ],
