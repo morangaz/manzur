@@ -42,48 +42,44 @@ const itemListSchema = {
       "@type": "ListItem",
       position: 1,
       item: {
-        "@type": "Product",
+        "@type": "Thing",
         name: "גדר קלאסית",
         description:
           "פסי אלומיניום אנכיים בצבעים ומרווחים שונים — אווירה של הגדר הקלאסית. פרטיות בינונית.",
         image: "https://www.manzur.co.il/images/fence-classic.png",
-        brand: { "@type": "Brand", name: "מנצור אלומיניום" },
       },
     },
     {
       "@type": "ListItem",
       position: 2,
       item: {
-        "@type": "Product",
+        "@type": "Thing",
         name: "גדר כפרית",
         description:
           "פרופילי אלומיניום ברוחב שונה במגוון צבעים — מראה חם וכפרי. פרטיות גבוהה.",
         image: "https://www.manzur.co.il/images/fence-rural.webp",
-        brand: { "@type": "Brand", name: "מנצור אלומיניום" },
       },
     },
     {
       "@type": "ListItem",
       position: 3,
       item: {
-        "@type": "Product",
+        "@type": "Thing",
         name: "גדר היי-טק מודרני",
         description:
           "פסי אלומיניום משופעים לכיסוי מלא — מראה מודרני, מתכתי ונועז. פרטיות מלאה.",
         image: "https://www.manzur.co.il/images/fence-hitech-slope.png",
-        brand: { "@type": "Brand", name: "מנצור אלומיניום" },
       },
     },
     {
       "@type": "ListItem",
       position: 4,
       item: {
-        "@type": "Product",
+        "@type": "Thing",
         name: "גדר חיתוכי לייזר",
         description:
           "פאנלים עם חיתוכי לייזר גיאומטריים — אופציה לתאורה משולבת ומראה אדריכלי ייחודי.",
         image: "https://www.manzur.co.il/images/fence-laser.webp",
-        brand: { "@type": "Brand", name: "מנצור אלומיניום" },
       },
     },
   ],

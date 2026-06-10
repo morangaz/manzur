@@ -28,6 +28,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: "https://www.manzur.co.il/about",
+      lastModified: new Date("2026-06-10"),
+      changeFrequency: "yearly",
+      priority: 0.6,
+    },
+    {
+      url: "https://www.manzur.co.il/contact",
+      lastModified: new Date("2026-06-10"),
+      changeFrequency: "yearly",
+      priority: 0.6,
+    },
+    {
       url: "https://www.manzur.co.il/blog",
       lastModified: new Date(mostRecentPostDate),
       changeFrequency: "weekly",
