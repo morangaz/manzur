@@ -50,6 +50,12 @@ export default function Contact() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const submitBtnRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (submitted) dialogRef.current?.focus();
+  }, [submitted]);
 
   const validate = (): boolean => {
     const errs: FormErrors = {};
@@ -128,16 +134,21 @@ export default function Contact() {
                   onClick={() => setSubmitted(false)}
                 >
                   <div
-                    className="relative max-w-md w-full p-8 rounded-3xl text-right shadow-2xl"
+                    ref={dialogRef}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="contact-dialog-title"
+                    tabIndex={-1}
+                    className="relative max-w-md w-full p-8 rounded-3xl text-right shadow-2xl focus:outline-none"
                     style={{ background: "white", color: "var(--deep-charcoal)" }}
                     dir="rtl"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <button
-                      onClick={() => setSubmitted(false)}
+                      onClick={() => { setSubmitted(false); submitBtnRef.current?.focus(); }}
                       className="absolute top-4 left-4 w-8 h-8 rounded-full flex items-center justify-center hover:opacity-70 transition-opacity"
                       style={{ background: "var(--warm-sand)" }}
-                      aria-label="סגור"
+                      aria-label="סגור חלון תודה"
                     >
                       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                         <path
@@ -149,7 +160,7 @@ export default function Contact() {
                       </svg>
                     </button>
                     <div className="text-5xl mb-4">🎁</div>
-                    <h3 className="text-2xl font-black mb-4">תודה על פנייתכם</h3>
+                    <h3 id="contact-dialog-title" className="text-2xl font-black mb-4">תודה על פנייתכם</h3>
                     <div className="space-y-3 text-base leading-relaxed">
                       <p>צוות המומחים שלנו יצור איתכם קשר עד יום העסקים הבא</p>
                       <p className="font-semibold">
@@ -172,7 +183,7 @@ export default function Contact() {
                       </p>
                     </div>
                     <button
-                      onClick={() => setSubmitted(false)}
+                      onClick={() => { setSubmitted(false); submitBtnRef.current?.focus(); }}
                       className="mt-6 w-full py-3 rounded-full font-bold text-base hover:opacity-90 transition-opacity"
                       style={{ background: "var(--earth)", color: "white" }}
                     >
@@ -336,6 +347,7 @@ export default function Contact() {
                 </label>
 
                 <button
+                  ref={submitBtnRef}
                   type="submit"
                   disabled={loading}
                   className="btn-primary w-full justify-center text-base py-4"
