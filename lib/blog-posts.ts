@@ -126,7 +126,7 @@ export const BLOG_POSTS: BlogPost[] = [
     relatedSlugs: [
       "diy-aluminum-fence-installation-guide",
       "choosing-aluminum-fence-model-styles",
-      "aluminum-fence-maintenance-seasonal-care",
+      "pool-safety-fence-aluminum-guide",
     ],
   },
 
@@ -235,7 +235,7 @@ export const BLOG_POSTS: BlogPost[] = [
     relatedSlugs: [
       "fence-law-shared-neighbors-rights",
       "choosing-aluminum-fence-model-styles",
-      "aluminum-fence-maintenance-seasonal-care",
+      "aluminum-gate-guide-types-prices",
     ],
   },
 
@@ -347,7 +347,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     relatedSlugs: [
       "diy-aluminum-fence-installation-guide",
-      "aluminum-fence-maintenance-seasonal-care",
+      "aluminum-gate-guide-types-prices",
       "aluminum-vs-iron-wood-pvc-fence-comparison",
     ],
   },
@@ -609,7 +609,7 @@ export const BLOG_POSTS: BlogPost[] = [
     relatedSlugs: [
       "choosing-aluminum-fence-model-styles",
       "aluminum-fence-maintenance-seasonal-care",
-      "aluminum-fence-color-guide-ral-powder-coating",
+      "pool-safety-fence-aluminum-guide",
     ],
   },
 

@@ -71,11 +71,61 @@ const faqSchema = {
   ],
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.manzur.co.il/#organization",
+  name: "מנצור אלומיניום",
+  legalName: "מנצור אלומיניום",
+  url: "https://www.manzur.co.il/",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://www.manzur.co.il/images/logo.png",
+    width: 300,
+    height: 60,
+  },
+  foundingDate: "1991",
+  telephone: "09-7603602",
+  email: "info@manzur.co.il",
+  description:
+    "מפעל ייצור והתקנת גדרות, שערים ופרגולות אלומיניום ברעננה. 35 שנות ניסיון, מאות פרויקטים מבוצעים באזור המרכז.",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "החרושת 2",
+    addressLocality: "רעננה",
+    addressRegion: "המרכז",
+    postalCode: "4310201",
+    addressCountry: "IL",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 32.1847,
+    longitude: 34.8713,
+  },
+  areaServed: [
+    { "@type": "City", name: "רעננה" },
+    { "@type": "City", name: "כפר סבא" },
+    { "@type": "City", name: "הרצליה" },
+    { "@type": "City", name: "נתניה" },
+    { "@type": "City", name: "תל אביב" },
+    { "@type": "City", name: "פתח תקווה" },
+  ],
+  sameAs: ["https://wa.me/972504646536"],
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "09-7603602",
+    contactType: "customer service",
+    availableLanguage: "Hebrew",
+    areaServed: "IL",
+  },
+};
+
 export default function HomePage() {
   return (
     <div className="min-h-screen" dir="rtl">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       <Navbar />
       <main>
         <Hero />
