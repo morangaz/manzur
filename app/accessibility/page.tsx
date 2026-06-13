@@ -48,6 +48,29 @@ export default function AccessibilityPage() {
             </p>
           </section>
 
+          {/* Accessibility toolbar */}
+          <section aria-labelledby="toolbar-heading" className="mb-10 p-6 rounded-2xl" style={{ background: "var(--warm-sand)", border: "1px solid var(--border)" }}>
+            <h2 id="toolbar-heading" className="text-xl font-bold mb-3" style={{ color: "var(--deep-charcoal)" }}>
+              סרגל כלי הנגישות
+            </h2>
+            <p className="leading-relaxed mb-3">
+              בפינה הימנית התחתונה של כל עמוד באתר מופיע כפתור נגישות (אייקון אדם בעיגול).
+              לחיצה עליו פותחת סרגל כלים הכולל:
+            </p>
+            <ul className="space-y-1.5 leading-relaxed list-disc list-inside" style={{ color: "var(--deep-charcoal)" }}>
+              <li><strong>גודל גופן</strong> — הגדלת הטקסט עד 160% (4 רמות)</li>
+              <li><strong>ניגודיות גבוהה</strong> — רקע שחור, טקסט לבן וקישורים צהובים</li>
+              <li><strong>מצב כהה</strong> — פלטת צבעים כהה לנוחות ראייה</li>
+              <li><strong>מצב בהיר</strong> — פלטה בהירה עם ניגודיות מוגברת</li>
+              <li><strong>הדגש קישורים</strong> — קו תחתי לכל הקישורים</li>
+              <li><strong>עצור אנימציות</strong> — השבתת אנימציות ומעברי תנועה</li>
+              <li><strong>איפוס</strong> — החזרת כל ההגדרות לברירת המחדל</li>
+            </ul>
+            <p className="text-sm mt-3" style={{ color: "var(--muted-foreground)" }}>
+              ההגדרות נשמרות אוטומטית לביקורים עתידיים.
+            </p>
+          </section>
+
           {/* Accessible features */}
           <section aria-labelledby="features-heading" className="mb-10">
             <h2 id="features-heading" className="text-2xl font-bold mb-4" style={{ color: "var(--deep-charcoal)" }}>
@@ -66,6 +89,7 @@ export default function AccessibilityPage() {
               <li>מבנה כותרות היררכי ועקבי בכל עמודי האתר</li>
               <li>מגנון הנפתח (FAQ) מוצג עם מצב aria-expanded ברור</li>
               <li>תפריט הניווט הנייד מסומן עם מצב פתוח/סגור לקוראי מסך</li>
+              <li>סרגל כלי נגישות מובנה: גודל גופן, ניגודיות, מצב כהה/בהיר, הדגשת קישורים, עצירת אנימציות</li>
             </ul>
           </section>
 

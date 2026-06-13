@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Heebo } from "next/font/google";
 import Script from "next/script";
 import { Toaster } from "sonner";
+import AccessibilityWidget from "@/components/AccessibilityWidget";
 import "./globals.css";
 
 const heebo = Heebo({
@@ -246,6 +247,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </noscript>
         {children}
         <Toaster position="bottom-center" richColors />
+        <AccessibilityWidget />
       </body>
     </html>
   );

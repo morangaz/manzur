@@ -295,3 +295,80 @@
     }
   }
 }
+
+/* ===== Accessibility Widget — Color Schemes ===== */
+
+/* High Contrast */
+html.a11y-color-high-contrast {
+  --earth: #ffff00;
+  --warm-sand: #000000;
+  --deep-charcoal: #ffffff;
+  --cream: #000000;
+  --muted-foreground: #dddddd;
+  --border: #ffffff;
+  --background: #000000;
+  --foreground: #ffffff;
+}
+html.a11y-color-high-contrast body {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+html.a11y-color-high-contrast a {
+  color: #ffff00 !important;
+  text-decoration: underline !important;
+}
+html.a11y-color-high-contrast button,
+html.a11y-color-high-contrast [role="button"] {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+}
+html.a11y-color-high-contrast img {
+  filter: brightness(0.85) contrast(1.1);
+}
+
+/* Dark Mode */
+html.a11y-color-dark {
+  --earth: oklch(0.55 0.09 145);
+  --warm-sand: oklch(0.17 0.015 60);
+  --deep-charcoal: oklch(0.88 0.01 80);
+  --cream: oklch(0.13 0.01 60);
+  --muted-foreground: oklch(0.6 0.01 60);
+  --border: oklch(0.28 0.01 60);
+  --background: oklch(0.13 0.01 60);
+  --foreground: oklch(0.88 0.01 80);
+}
+html.a11y-color-dark body {
+  background: oklch(0.13 0.01 60) !important;
+  color: oklch(0.88 0.01 80) !important;
+}
+
+/* Bright / High Luminance */
+html.a11y-color-bright {
+  --earth: oklch(0.35 0.1 145);
+  --warm-sand: oklch(0.98 0.005 80);
+  --deep-charcoal: oklch(0.08 0.02 60);
+  --cream: oklch(1 0 0);
+  --muted-foreground: oklch(0.38 0.02 60);
+  --border: oklch(0.82 0.01 80);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.08 0.02 60);
+}
+html.a11y-color-bright body {
+  background: #ffffff !important;
+  color: oklch(0.08 0.02 60) !important;
+}
+
+/* Underline all links */
+html.a11y-underline-links a {
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+}
+
+/* Stop all animations & transitions */
+html.a11y-no-animations *,
+html.a11y-no-animations *::before,
+html.a11y-no-animations *::after {
+  animation: none !important;
+  transition: none !important;
+}
