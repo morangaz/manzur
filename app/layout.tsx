@@ -180,6 +180,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="he" dir="rtl" className={heebo.variable}>
       <head>
+        <style>{`
+          .skip-link {
+            position: absolute;
+            top: -9999px;
+            right: 0;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 700;
+            z-index: 9999;
+            border-radius: 0 0 8px 0;
+            text-decoration: none;
+          }
+          .skip-link:focus {
+            top: 0;
+            outline: 3px solid #f59e0b;
+            outline-offset: 2px;
+          }
+        `}</style>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <script
@@ -213,6 +233,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <a href="#main-content" className="skip-link">
+          דלג לתוכן הראשי
+        </a>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=AW-18167940874"

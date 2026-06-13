@@ -67,7 +67,9 @@ export default function Navbar() {
         <button
           className="md:hidden p-2 rounded-lg"
           onClick={() => setOpen(!open)}
-          aria-label="תפריט"
+          aria-label={open ? "סגור תפריט" : "פתח תפריט"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
         >
           <div className="w-6 flex flex-col gap-1.5">
             <span
@@ -89,6 +91,9 @@ export default function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div
+          id="mobile-menu"
+          role="navigation"
+          aria-label="תפריט ניווט נייד"
           className="md:hidden px-4 pb-4 flex flex-col gap-3 text-right"
           style={{ background: "oklch(0.98 0.008 80)" }}
         >

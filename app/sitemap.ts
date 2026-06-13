@@ -40,6 +40,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
+      url: "https://www.manzur.co.il/accessibility",
+      lastModified: new Date("2026-06-13"),
+      changeFrequency: "yearly",
+      priority: 0.4,
+    },
+    {
       url: "https://www.manzur.co.il/blog",
       lastModified: new Date(mostRecentPostDate),
       changeFrequency: "weekly",

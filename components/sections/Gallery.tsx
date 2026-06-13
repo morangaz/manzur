@@ -42,13 +42,15 @@ export default function Gallery() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-16" role="list" aria-label="גלריית פרויקטים">
           {GALLERY_IMGS.map((g, i) => (
-            <div
+            <button
               key={i}
-              className="relative overflow-hidden rounded-2xl cursor-pointer group"
+              role="listitem"
+              className="relative overflow-hidden rounded-2xl cursor-pointer group focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 focus-visible:ring-amber-400"
               style={{ aspectRatio: i === 0 || i === 3 ? "4/3" : "1/1" }}
               onClick={() => setActiveImg(g.url)}
+              aria-label={`הצג תמונה מוגדלת: ${g.label}`}
             >
               <Image
                 src={g.url}
@@ -66,23 +68,36 @@ export default function Gallery() {
               >
                 <span className="text-white text-sm font-semibold">{g.label}</span>
               </div>
-            </div>
+            </button>
           ))}
         </div>
 
         {/* Lightbox */}
         {activeImg && (
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="תמונה מוגדלת מהגלריה"
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
             style={{ background: "oklch(0 0 0 / 0.85)" }}
             onClick={() => setActiveImg(null)}
           >
+            <button
+              className="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-white/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              onClick={() => setActiveImg(null)}
+              aria-label="סגור תמונה"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M1 1l14 14M15 1L1 15" stroke="white" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </button>
             <Image
               src={activeImg}
-              alt="תמונה מוגדלת"
+              alt="תמונה מוגדלת מגלריית הפרויקטים"
               width={1200}
               height={800}
               className="max-w-full max-h-full rounded-2xl object-contain"
+              onClick={(e) => e.stopPropagation()}
             />
           </div>
         )}

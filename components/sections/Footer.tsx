@@ -37,6 +37,9 @@ export default function Footer() {
             <a href="/blog" className="hover:text-white transition-colors">
               בלוג
             </a>
+            <a href="/accessibility" className="hover:text-white transition-colors">
+              הצהרת נגישות
+            </a>
             <a
               href={INSTAGRAM_URL}
               target="_blank"
