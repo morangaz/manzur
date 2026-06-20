@@ -46,7 +46,6 @@ export default function Gallery() {
           {GALLERY_IMGS.map((g, i) => (
             <button
               key={i}
-              role="listitem"
               className="relative overflow-hidden rounded-2xl cursor-pointer group focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 focus-visible:ring-amber-400"
               style={{ aspectRatio: i === 0 || i === 3 ? "4/3" : "1/1" }}
               onClick={() => setActiveImg(g.url)}

@@ -140,13 +140,13 @@
 
   .btn-whatsapp {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-bold text-base transition-all duration-150;
-    background: #25D366;
+    background: #0d7a36;
     color: white;
   }
   .btn-whatsapp:hover {
-    background: #1ebe5d;
+    background: #0a6a2e;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px #25D36640;
+    box-shadow: 0 8px 24px #0d7a3650;
   }
   .btn-whatsapp:active { transform: scale(0.97); }
 
@@ -247,12 +247,12 @@
     left: 1.5rem;
     z-index: 50;
     @apply flex items-center gap-2 px-4 py-3 rounded-full font-bold text-sm shadow-xl transition-all duration-200;
-    background: #25D366;
+    background: #0d7a36;
     color: white;
   }
   .whatsapp-float:hover {
     transform: scale(1.05);
-    box-shadow: 0 12px 32px #25D36650;
+    box-shadow: 0 12px 32px #0d7a3650;
   }
 
   .rtl-bullet-list {

@@ -351,7 +351,7 @@ export default function Contact() {
                   type="submit"
                   disabled={loading}
                   className="btn-primary w-full justify-center text-base py-4"
-                  aria-label="שליחת טופס הצעת מחיר"
+                  aria-label="שלחו את הטופס"
                 >
                   {loading ? "שולחים..." : "שלחו את הטופס"}
                 </button>

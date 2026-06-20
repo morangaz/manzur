@@ -55,6 +55,7 @@ export default function HowItWorks() {
               <div
                 className="text-5xl font-black mb-4 text-right"
                 style={{ color: "oklch(1 0 0 / 0.08)" }}
+                aria-hidden="true"
               >
                 {s.n}
               </div>
